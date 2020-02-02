@@ -4,7 +4,7 @@
 ### Learning Objectives
 
 * Understand how for loops can help us reduce repetition
-* Understand the syntax of for loops 
+* Understand the syntax of for loops
 
 ### Picking up where we last left off
 
@@ -48,11 +48,11 @@ Our `cities` list contains information about the top 12 cities by population.  F
 
 
 ```python
-city_indices = None
+city_indices = list(range(0, len(cities)))
 city_indices # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 ```
 
-Now we want to create labels for each of the cities. We'll provide a list of the `city_names` for you. 
+Now we want to create labels for each of the cities. We'll provide a list of the `city_names` for you.
 
 
 ```python
@@ -74,8 +74,12 @@ Your task is to assign the variable `names_and_ranks` to a list, with each eleme
 
 
 ```python
-names_and_ranks = [] 
+names_and_ranks = []
+for city_index in city_indices:
+    rank = city_index + 1
+    names_and_ranks.append(f'{rank}. {city_names[city_index]}')
 # write a for loop that adds the properly formatted string to the names_and_ranks list
+print(names_and_ranks)
 ```
 
 
@@ -90,6 +94,9 @@ Ok, now let's create a new variable called `city_populations`.  Use a `for` loop
 
 ```python
 city_populations = []
+for city_index in city_indices:
+    city_populations.append(cities[city_index]['Population'])
+city_populations
 ```
 
 
@@ -103,10 +110,10 @@ Great! Now we can begin to plot this data.  First, let's create a trace of our p
 
 
 ```python
-trace_populations = {'x': names_and_ranks, 
-                     'y': city_populations, 
-                     'text': names_and_ranks, 
-                     'type': 'bar', 
+trace_populations = {'x': names_and_ranks,
+                     'y': city_populations,
+                     'text': names_and_ranks,
+                     'type': 'bar',
                      'name': 'populations'}
 ```
 
@@ -122,6 +129,9 @@ Now we want declare a variable called `city_areas` that points to a list of all 
 
 ```python
 city_areas = []
+for city_index in city_indices:
+    city_areas.append(cities[city_index]['Area'])
+city_areas
 ```
 
 
